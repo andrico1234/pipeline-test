@@ -1,0 +1,9 @@
+# Empty pipeline
+name: Pipeline Demo
+
+# when do we want this to run?
+# what steps do we want to run?
+# will there be anything we want to differently between our local environment and our CI?
+# how do we manage environment variables?
+# how can we deploy our site?
+# how can we run steps in parallel or sequentially?
