@@ -1,9 +1,48 @@
-# Empty pipeline
 name: Pipeline Demo
 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+      - run: npm install
+      - run: npm run build
+      - run: npm run lint
+      - run: npm test
+      - run: npm run docs
+
+# How to specify what runtime environment we want
+
 # when do we want this to run?
+#   when we push or create a PR to main
+
+
 # what steps do we want to run?
-# will there be anything we want to differently between our local environment and our CI?
+# - First step: Install the node modules to be included for the pipeline
+# - Second step: 
+# Scripts needed:
+#   npm run build  [ note: interchangeably, can be run in parellel]
+#   npm run lint
+#   npm test
+#   npm run docs 
+# Deploy static site to Netlify
+
 # how do we manage environment variables?
+#   https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsenv
+#   https://docs.github.com/en/actions/security-guides/encrypted-secrets
 # how can we deploy our site?
+  # Create netflify auth token and need a netlify site id
 # how can we run steps in parallel or sequentially?
